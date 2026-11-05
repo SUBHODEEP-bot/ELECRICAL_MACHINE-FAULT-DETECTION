@@ -1,0 +1,14 @@
+{
+  "window_count": 863,
+  "asset_count": 6,
+  "window_size_samples": 4096,
+  "stride_samples": 4096,
+  "sample_rate_hz": 3200,
+  "split": "asset_group_holdout",
+  "classification": "skipped: at least two fault classes are required",
+  "anomaly_detection": "skipped: include at least two windows labelled normal/healthy",
+  "rul": {
+    "mae_seconds": 3419.6492410018745,
+    "test_windows": 175
+  }
+}

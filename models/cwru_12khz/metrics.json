@@ -1,0 +1,18 @@
+{
+  "window_count": 3065,
+  "asset_count": 16,
+  "window_size_samples": 2048,
+  "stride_samples": 1024,
+  "sample_rate_hz": 12000,
+  "split": "asset_group_holdout",
+  "classification": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "test_windows": 1179
+  },
+  "anomaly_detection": {
+    "normal_training_windows": 1653,
+    "method": "IsolationForest trained on normal windows"
+  },
+  "rul": "skipped: provide rul_seconds or use --derive-rul during preparation"
+}

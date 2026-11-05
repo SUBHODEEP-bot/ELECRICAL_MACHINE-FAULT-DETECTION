@@ -1,0 +1,17 @@
+{
+  "description": "Dataset catalogue transcribed from Datasets_Fault_Detection.pdf. Source files use different layouts and must be converted to the canonical CSV schema before training.",
+  "datasets": [
+    {"id": "cwru", "name": "CWRU Bearing Dataset", "url": "https://engineering.case.edu/bearingdatacenter", "tasks": ["classification"], "signals": ["vibration"], "fault_families": ["bearing_fault"]},
+    {"id": "femto_pronostia", "name": "NASA FEMTO / PRONOSTIA (PHM 2012)", "url": "https://www.kaggle.com/datasets?search=PHM+2012+bearing", "tasks": ["rul"], "signals": ["vibration", "temperature"], "fault_families": ["bearing_fault"]},
+    {"id": "ims", "name": "IMS Bearing (UoC)", "url": "https://www.kaggle.com/datasets?search=IMS+bearing", "tasks": ["rul", "anomaly"], "signals": ["vibration"], "fault_families": ["bearing_fault"]},
+    {"id": "mfpt", "name": "MFPT Bearing Dataset", "url": "https://www.mfpt.org/fault-data-sets/", "tasks": ["classification"], "signals": ["vibration"], "fault_families": ["bearing_fault"]},
+    {"id": "paderborn", "name": "Paderborn Bearing (KAT)", "url": "https://mb.uni-paderborn.de/kat/forschung/kat-datacenter/bearing-datacenter", "tasks": ["classification"], "signals": ["vibration", "current"], "fault_families": ["bearing_fault"]},
+    {"id": "xjtu_sy", "name": "XJTU-SY Bearing Dataset", "url": "https://biaowang.tech/xjtu-sy-bearing-datasets/", "tasks": ["rul"], "signals": ["vibration"], "fault_families": ["bearing_fault"]},
+    {"id": "seu_gearbox", "name": "SEUC Gearbox Dataset", "url": "https://github.com/cathysiyu/Mechanical-datasets", "tasks": ["classification"], "signals": ["vibration", "current"], "fault_families": ["gear_fault", "bearing_fault"]},
+    {"id": "ottawa_bearing", "name": "Ottawa Bearing Dataset", "url": "https://www.kaggle.com/datasets?search=Ottawa+bearing", "tasks": ["rul", "classification"], "signals": ["vibration"], "fault_families": ["bearing_fault"]},
+    {"id": "phm_2009_gearbox", "name": "PHM 2009 Gearbox Challenge", "url": "https://www.kaggle.com/datasets?search=PHM09+gearbox", "tasks": ["classification"], "signals": ["vibration"], "fault_families": ["gear_fault", "bearing_fault", "shaft_fault"]},
+    {"id": "mafaulda", "name": "MaFaulDa Machinery Fault Database", "url": "https://www02.smt.ufrj.br/~offshore/mfs/", "tasks": ["classification"], "signals": ["vibration", "current", "tachometer"], "fault_families": ["imbalance", "misalignment", "bearing_fault", "shaft_fault"]},
+    {"id": "femto_2014", "name": "FEMTO Degradation (IEEE PHM 2014)", "url": "https://www.kaggle.com/datasets?search=FEMTO+2014+bearing", "tasks": ["rul"], "signals": ["vibration", "temperature"], "fault_families": ["bearing_fault"]},
+    {"id": "cwru_dirg_gearbox", "name": "CWRU + DIRG Gearbox", "url": "https://github.com/DIRG-POLITO/Gearbox-Fault-Dataset", "tasks": ["classification"], "signals": ["vibration"], "fault_families": ["gear_fault"]}
+  ]
+}

@@ -10,7 +10,28 @@ train three complementary models from one canonical sample table:
 The PDF contains **12** dataset entries, not 11. They cover different machines,
 fault taxonomies, and native file formats. Their catalogue is in
 [`datasets.json`](datasets.json). The PDF itself is a list of sources, not the
-sensor data. No raw datasets were present when this project was created.
+sensor data.
+
+## Trained reference models
+
+These are separate, source-specific baselines; they are not one model trained
+to recognize every machine and fault:
+
+| Dataset | Task | Held-out result |
+|---|---|---|
+| CWRU, 12 kHz Drive End | Fault classification | Asset-group accuracy and macro-F1: 1.00 |
+| XJTU-SY | RUL regression | MAE: about 3,420 seconds on a two-bearing holdout, versus about 4,719 seconds for a constant baseline |
+| MAFAULDA | Normal vs. horizontal misalignment | Recording-group accuracy 0.965 / macro-F1 0.955; held-out exact filename-speed groups 0.995 / 0.993 |
+
+The MAFAULDA model combines all four horizontal-misalignment severities and
+uses six accelerometer channels. The speed holdout excludes matching filename
+speed values, but nearby speeds may still occur in both splits.
+
+An IMS RUL experiment was not promoted: its held-out MAE was about 1,016,490
+seconds, worse than the 691,847-second constant baseline. Its target is time to
+the last recorded capture, not a confirmed physical failure time. Its holdout
+also shares an acquisition with another bearing, so it is not independent
+machine validation.
 
 ## Setup
 
@@ -115,9 +136,8 @@ written to `models\baseline\metrics.json`.
 
 ## Important limitations
 
-- The models have not been trained yet: the source PDF contains URLs and
-  descriptions, not downloadable signal files. Download the data and confirm
-  each dataset's terms before use.
+- Scores apply only to the named source, channels, and split; they do not
+  establish performance on field machines or other datasets.
 - Classification needs at least two fault classes. Anomaly detection needs
   healthy/normal windows. RUL needs `rul_seconds` (or verified run-to-failure
   data with `--derive-rul` and the correct sampling rate).
@@ -129,3 +149,5 @@ written to `models\baseline\metrics.json`.
 - This is a research baseline, not a certified safety or protection system.
   Validate on held-out machines, operating loads, and sensor installations
   before using it to make maintenance decisions.
+- Raw downloads and canonical datasets remain local and are not committed.
+  Published model artifacts and their metrics are stored separately.

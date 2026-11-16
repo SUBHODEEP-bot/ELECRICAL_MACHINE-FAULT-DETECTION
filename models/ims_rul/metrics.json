@@ -1,0 +1,20 @@
+{
+  "window_count": 5296,
+  "asset_count": 3,
+  "window_size_samples": 1024,
+  "stride_samples": 1024,
+  "sample_rate_hz": 1000,
+  "split": "asset_group_holdout",
+  "classification": "skipped: at least two fault classes are required",
+  "anomaly_detection": "skipped: include at least two windows labelled normal/healthy",
+  "rul": {
+    "mae_seconds": 1016489.7234329772,
+    "test_windows": 2156,
+    "constant_train_mean_baseline_mae_seconds": 691847.0503291066,
+    "beats_constant_baseline": false,
+    "held_out_assets": [
+      "IMS1_Bearing3"
+    ],
+    "evaluation_status": "not suitable for deployment: grouped holdout error is worse than a constant training-mean baseline"
+  }
+}

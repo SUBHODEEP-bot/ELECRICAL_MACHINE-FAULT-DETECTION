@@ -1,0 +1,77 @@
+{
+  "dataset": "NASA FEMTO / PRONOSTIA (PHM 2012)",
+  "source_url": "https://phm-datasets.s3.amazonaws.com/NASA/10.+FEMTO+Bearing.zip",
+  "target_definition": "Seconds to the final recorded capture in each complete run; captures are 10 seconds apart. This is a dataset endpoint target, not a field failure-time guarantee.",
+  "signal_definition": "Last two columns of each 2,560-row capture; 25.6 kHz vibration channels. Features use the shared statistical and spectral window extractor.",
+  "algorithm": "RandomForestRegressor(n_estimators=200, min_samples_leaf=2)",
+  "training": {
+    "bearings": 6,
+    "captures": 7534
+  },
+  "condition_grouped_cross_validation": {
+    "method": "3-fold GroupKFold; bearing operating-condition groups held out",
+    "model": {
+      "pooled_mae_seconds": 6792.34959993532,
+      "mean_per_bearing_mae_seconds": 5933.38614764974,
+      "per_bearing_mae_seconds": {
+        "Bearing1_1": 8893.53203222596,
+        "Bearing1_2": 1649.9251158791456,
+        "Bearing2_1": 3454.2085364326185,
+        "Bearing2_2": 3652.4618045031775,
+        "Bearing3_1": 9478.0296380413,
+        "Bearing3_2": 8472.159758816237
+      }
+    },
+    "constant_median_baseline": {
+      "pooled_mae_seconds": 6040.653039554022,
+      "mean_per_bearing_mae_seconds": 4697.0994330570475,
+      "per_bearing_mae_seconds": {
+        "Bearing1_1": 10020.560114163396,
+        "Bearing1_2": 2202.858783008037,
+        "Bearing2_1": 3576.4654226125135,
+        "Bearing2_2": 4010.0,
+        "Bearing3_1": 4150.0,
+        "Bearing3_2": 4222.712278558339
+      }
+    }
+  },
+  "full_test_set_holdout": {
+    "method": "Full_Test_Set trajectories held out by bearing; target is time to the final recorded capture.",
+    "bearings": 11,
+    "captures": 17355,
+    "model": {
+      "pooled_mae_seconds": 4903.194457456577,
+      "mean_per_bearing_mae_seconds": 5159.28855713615,
+      "per_bearing_mae_seconds": {
+        "Bearing1_3": 3897.9193106850457,
+        "Bearing1_4": 2771.645101857662,
+        "Bearing1_5": 5266.557294337875,
+        "Bearing1_6": 6532.410162597536,
+        "Bearing1_7": 4275.538683816123,
+        "Bearing2_3": 5019.044714478545,
+        "Bearing2_4": 5213.801114740231,
+        "Bearing2_5": 5968.595213186136,
+        "Bearing2_6": 2733.170372054043,
+        "Bearing2_7": 13337.789020225546,
+        "Bearing3_3": 1735.7031405189152
+      }
+    },
+    "constant_median_baseline": {
+      "pooled_mae_seconds": 6218.50417747047,
+      "mean_per_bearing_mae_seconds": 5484.637618780581,
+      "per_bearing_mae_seconds": {
+        "Bearing1_3": 7151.684210526316,
+        "Bearing1_4": 3598.235294117647,
+        "Bearing1_5": 7528.026796589525,
+        "Bearing1_6": 7463.553921568628,
+        "Bearing1_7": 6663.173970783532,
+        "Bearing2_3": 5434.450127877238,
+        "Bearing2_4": 2884.4873501997336,
+        "Bearing2_5": 6881.025530073562,
+        "Bearing2_6": 3036.376604850214,
+        "Bearing2_7": 5355.0,
+        "Bearing3_3": 4335.0
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "dataset": "University of Ottawa Rolling-element Dataset - Vibration and Acoustic Faults under Constant Load and Speed conditions (UORED-VAFCLS)",
+  "doi": "10.17632/y2px5tg92h.2",
+  "official_source": "https://data.mendeley.com/datasets/y2px5tg92h/2",
+  "license": "CC BY 4.0",
+  "raw_sample_rate_hz": 42000,
+  "raw_samples_per_capture": 420000,
+  "raw_duration_seconds": 10,
+  "downsampling": "polyphase anti-aliased decimation by 42",
+  "model_sample_rate_hz": 1000,
+  "sensor_columns": [
+    "Accelerometer",
+    "Acoustic"
+  ],
+  "excluded_columns": [
+    "Speed",
+    "Load",
+    "Temperature Difference"
+  ],
+  "excluded_column_reason": "Speed and load were only nonzero in the inspected raw capture metadata row; they were excluded from the signal model.",
+  "labels": {
+    "1_Healthy": "normal",
+    "2_Inner_Race_Faults": "bearing_inner_race",
+    "3_Outer_Race_Faults": "bearing_outer_race",
+    "4_Ball_Faults": "bearing_ball",
+    "5_Cage_Faults": "bearing_cage"
+  },
+  "capture_count": 60,
+  "bearing_groups": 20,
+  "canonical_rows": 600000,
+  "rul": "not trained; the dataset descriptions identify healthy/developing/faulty states but no time interval or failure-time ground truth was assigned here",
+  "holdout": "Five-fold grouped validation; each fold holds out one physical bearing ID from each fault family, keeping each bearing healthy/developing/faulty captures together."
+}

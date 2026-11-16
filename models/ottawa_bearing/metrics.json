@@ -1,0 +1,147 @@
+{
+  "window_count": 540,
+  "asset_count": 20,
+  "window_size_samples": 1024,
+  "stride_samples": 1024,
+  "sample_rate_hz": 1000,
+  "split": "five_fold_physical_bearing_grouped",
+  "classification": {
+    "accuracy": 0.5814814814814815,
+    "macro_f1": 0.5444323207740801,
+    "test_windows": 540,
+    "split": "Five folds; each fold holds out one physical bearing from each of the four fault families. Each bearing?s healthy/developing/faulty captures stay together.",
+    "folds": [
+      {
+        "fold": 1,
+        "held_out_bearings": [
+          "ottawa_bearing_01",
+          "ottawa_bearing_06",
+          "ottawa_bearing_11",
+          "ottawa_bearing_16"
+        ],
+        "accuracy": 0.46296296296296297,
+        "macro_f1": 0.384002378828427,
+        "majority_baseline_accuracy": 0.3333333333333333
+      },
+      {
+        "fold": 2,
+        "held_out_bearings": [
+          "ottawa_bearing_02",
+          "ottawa_bearing_07",
+          "ottawa_bearing_12",
+          "ottawa_bearing_17"
+        ],
+        "accuracy": 0.7037037037037037,
+        "macro_f1": 0.6413885778275475,
+        "majority_baseline_accuracy": 0.3333333333333333
+      },
+      {
+        "fold": 3,
+        "held_out_bearings": [
+          "ottawa_bearing_03",
+          "ottawa_bearing_08",
+          "ottawa_bearing_13",
+          "ottawa_bearing_18"
+        ],
+        "accuracy": 0.49074074074074076,
+        "macro_f1": 0.4185714285714286,
+        "majority_baseline_accuracy": 0.3333333333333333
+      },
+      {
+        "fold": 4,
+        "held_out_bearings": [
+          "ottawa_bearing_04",
+          "ottawa_bearing_09",
+          "ottawa_bearing_14",
+          "ottawa_bearing_19"
+        ],
+        "accuracy": 0.5370370370370371,
+        "macro_f1": 0.4979591836734694,
+        "majority_baseline_accuracy": 0.3333333333333333
+      },
+      {
+        "fold": 5,
+        "held_out_bearings": [
+          "ottawa_bearing_05",
+          "ottawa_bearing_10",
+          "ottawa_bearing_15",
+          "ottawa_bearing_20"
+        ],
+        "accuracy": 0.7129629629629629,
+        "macro_f1": 0.6277494130583376,
+        "majority_baseline_accuracy": 0.3333333333333333
+      }
+    ],
+    "classes": {
+      "bearing_ball": 90,
+      "bearing_cage": 90,
+      "bearing_inner_race": 90,
+      "bearing_outer_race": 90,
+      "normal": 180
+    },
+    "majority_train_class_baseline_accuracy_mean": 0.3333333333333333
+  },
+  "anomaly_detection": {
+    "method": "IsolationForest fitted only on training-fold healthy windows",
+    "test_windows": 540,
+    "accuracy": 0.6814814814814815,
+    "precision": 0.7883435582822086,
+    "recall": 0.7138888888888889,
+    "f1": 0.749271137026239
+  },
+  "rul": "not trained: no measured time-to-failure target",
+  "sensor_features": [
+    "ch0_mean",
+    "ch0_std",
+    "ch0_rms",
+    "ch0_peak_to_peak",
+    "ch0_abs_mean",
+    "ch0_skew",
+    "ch0_kurtosis",
+    "ch0_crest_factor",
+    "ch0_dominant_hz",
+    "ch0_spectral_centroid_hz",
+    "ch0_band0_power_ratio",
+    "ch0_band1_power_ratio",
+    "ch0_band2_power_ratio",
+    "ch1_mean",
+    "ch1_std",
+    "ch1_rms",
+    "ch1_peak_to_peak",
+    "ch1_abs_mean",
+    "ch1_skew",
+    "ch1_kurtosis",
+    "ch1_crest_factor",
+    "ch1_dominant_hz",
+    "ch1_spectral_centroid_hz",
+    "ch1_band0_power_ratio",
+    "ch1_band1_power_ratio",
+    "ch1_band2_power_ratio"
+  ],
+  "single_grouped_holdout_reference": {
+    "classification": {
+      "accuracy": 0.46296296296296297,
+      "macro_f1": 0.384002378828427,
+      "test_windows": 108,
+      "split": "held out bearing IDs 01, 06, 11, 16; one fault bearing per family",
+      "held_out_classes": {
+        "bearing_ball": 18,
+        "bearing_cage": 18,
+        "bearing_inner_race": 18,
+        "bearing_outer_race": 18,
+        "normal": 36
+      },
+      "majority_train_class_baseline_accuracy": 0.3333333333333333,
+      "majority_train_class_baseline_macro_f1": 0.1
+    },
+    "anomaly_detection": {
+      "method": "IsolationForest, fit only on training-bearing healthy windows",
+      "train_normal_windows": 144,
+      "test_windows": 108,
+      "accuracy": 0.6666666666666666,
+      "precision": 0.8333333333333334,
+      "recall": 0.625,
+      "f1": 0.7142857142857143
+    }
+  }
+}

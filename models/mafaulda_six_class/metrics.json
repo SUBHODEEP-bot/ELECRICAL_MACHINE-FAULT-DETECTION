@@ -1,0 +1,233 @@
+{
+  "dataset": "MaFaulDa Machinery Fault Database",
+  "source_url": "https://www02.smt.ufrj.br/~offshore/mfs/page_01.html",
+  "classes": [
+    "normal",
+    "horizontal_misalignment",
+    "vertical_misalignment",
+    "imbalance",
+    "underhang_bearing",
+    "overhang_bearing"
+  ],
+  "recordings_by_class": {
+    "normal": 49,
+    "horizontal_misalignment": 197,
+    "vertical_misalignment": 301,
+    "imbalance": 333,
+    "underhang_bearing": 558,
+    "overhang_bearing": 513
+  },
+  "total_recordings": 1951,
+  "total_windows": 7804,
+  "sampling": {
+    "original_rate_hz": 50000,
+    "decimation": "polyphase anti-aliased 50:1",
+    "model_rate_hz": 1000,
+    "window_size_samples": 1024,
+    "stride_samples": 1024,
+    "sensor_channels": [
+      "underhang_axial",
+      "underhang_radial",
+      "underhang_tangential",
+      "overhang_axial",
+      "overhang_radial",
+      "overhang_tangential"
+    ],
+    "excluded_columns": [
+      "tachometer",
+      "microphone"
+    ]
+  },
+  "algorithm": "RandomForestClassifier(n_estimators=200, min_samples_leaf=2, class_weight='balanced_subsample')",
+  "recording_group_holdout": {
+    "method": "20% GroupShuffleSplit; all windows from each recording stay together",
+    "accuracy": 0.9891304347826086,
+    "macro_f1": 0.9794036267231329,
+    "test_windows": 1564
+  },
+  "exact_speed_grouped_cross_validation": {
+    "method": "5-fold GroupKFold; all recordings with the same filename speed stem are held out together",
+    "folds": [
+      {
+        "fold": 1,
+        "held_out_speed_groups": 50,
+        "held_out_windows": 1564,
+        "training_classes": [
+          "horizontal_misalignment",
+          "imbalance",
+          "normal",
+          "overhang_bearing",
+          "underhang_bearing",
+          "vertical_misalignment"
+        ],
+        "model": {
+          "accuracy": 0.989769820971867,
+          "macro_f1": 0.9885783569030985
+        },
+        "majority_baseline": {
+          "accuracy": 0.2966751918158568,
+          "macro_f1": 0.0762656147271532
+        }
+      },
+      {
+        "fold": 2,
+        "held_out_speed_groups": 49,
+        "held_out_windows": 1560,
+        "training_classes": [
+          "horizontal_misalignment",
+          "imbalance",
+          "normal",
+          "overhang_bearing",
+          "underhang_bearing",
+          "vertical_misalignment"
+        ],
+        "model": {
+          "accuracy": 0.9948717948717949,
+          "macro_f1": 0.9852224974492944
+        },
+        "majority_baseline": {
+          "accuracy": 0.3128205128205128,
+          "macro_f1": 0.07942708333333333
+        }
+      },
+      {
+        "fold": 3,
+        "held_out_speed_groups": 49,
+        "held_out_windows": 1560,
+        "training_classes": [
+          "horizontal_misalignment",
+          "imbalance",
+          "normal",
+          "overhang_bearing",
+          "underhang_bearing",
+          "vertical_misalignment"
+        ],
+        "model": {
+          "accuracy": 0.9961538461538462,
+          "macro_f1": 0.9969179861964523
+        },
+        "majority_baseline": {
+          "accuracy": 0.28205128205128205,
+          "macro_f1": 0.07333333333333333
+        }
+      },
+      {
+        "fold": 4,
+        "held_out_speed_groups": 49,
+        "held_out_windows": 1560,
+        "training_classes": [
+          "horizontal_misalignment",
+          "imbalance",
+          "normal",
+          "overhang_bearing",
+          "underhang_bearing",
+          "vertical_misalignment"
+        ],
+        "model": {
+          "accuracy": 0.9852564102564103,
+          "macro_f1": 0.9752909447411843
+        },
+        "majority_baseline": {
+          "accuracy": 0.26153846153846155,
+          "macro_f1": 0.06910569105691057
+        }
+      },
+      {
+        "fold": 5,
+        "held_out_speed_groups": 49,
+        "held_out_windows": 1560,
+        "training_classes": [
+          "horizontal_misalignment",
+          "imbalance",
+          "normal",
+          "overhang_bearing",
+          "underhang_bearing",
+          "vertical_misalignment"
+        ],
+        "model": {
+          "accuracy": 0.9884615384615385,
+          "macro_f1": 0.9694813415978111
+        },
+        "majority_baseline": {
+          "accuracy": 0.27692307692307694,
+          "macro_f1": 0.07228915662650602
+        }
+      }
+    ],
+    "out_of_fold_model": {
+      "accuracy": 0.9909021014864172,
+      "macro_f1": 0.9833897236950543
+    },
+    "out_of_fold_majority_baseline": {
+      "accuracy": 0.2860071758072783,
+      "macro_f1": 0.07413312076524511
+    },
+    "held_out_speed_groups": 246,
+    "classes": [
+      "horizontal_misalignment",
+      "imbalance",
+      "normal",
+      "overhang_bearing",
+      "underhang_bearing",
+      "vertical_misalignment"
+    ],
+    "caveat": "Exact filename-speed groups are disjoint; nearby operating speeds may still occur in different folds. Laboratory results are not field validation."
+  },
+  "anomaly_detection": {
+    "method": "5-fold exact-speed-grouped evaluation; IsolationForest is fit only on healthy training windows",
+    "folds": [
+      {
+        "fold": 1,
+        "held_out_windows": 1564,
+        "normal_training_windows": 152,
+        "accuracy": 0.9245524296675192,
+        "precision": 1.0,
+        "recall": 0.9223684210526316,
+        "f1": 0.9596167008898016
+      },
+      {
+        "fold": 2,
+        "held_out_windows": 1560,
+        "normal_training_windows": 156,
+        "accuracy": 0.9326923076923077,
+        "precision": 0.9978888106966924,
+        "recall": 0.9328947368421052,
+        "f1": 0.9642978578714723
+      },
+      {
+        "fold": 3,
+        "held_out_windows": 1560,
+        "normal_training_windows": 160,
+        "accuracy": 0.8769230769230769,
+        "precision": 0.9882697947214076,
+        "recall": 0.884514435695538,
+        "f1": 0.9335180055401662
+      },
+      {
+        "fold": 4,
+        "held_out_windows": 1560,
+        "normal_training_windows": 156,
+        "accuracy": 0.9224358974358975,
+        "precision": 1.0,
+        "recall": 0.9203947368421053,
+        "f1": 0.9585474477560808
+      },
+      {
+        "fold": 5,
+        "held_out_windows": 1560,
+        "normal_training_windows": 160,
+        "accuracy": 0.9371794871794872,
+        "precision": 0.9903713892709766,
+        "recall": 0.9448818897637795,
+        "f1": 0.9670920080591001
+      }
+    ],
+    "out_of_fold": {
+      "accuracy": 0.9187596104561763,
+      "precision": 0.9953125,
+      "recall": 0.9210042060988434,
+      "f1": 0.9567176406335336
+    },
+    "normal_training_windows": 196
+  }
+}
